@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <title>Mobile app - ESF</title>
+  <link rel="stylesheet" href="{{url_for('static', filename = 'style.css')}}">
+  <script defer src="{{url_for('static', filename = 'anime.min.js')}}"></script>
+  <script defer src="{{url_for('static', filename = 'script.js')}}"></script>
+</head>
+
+
+<body>
+
+  
+    <header>
+     
+      <div class="header-container">
+        <div class="order-status">Arriving date</div>
+        <div class="order-date">EVENT NAME</div>
+        <div class="order-day">
+          Friday
+        </div>
+      </div>
+
+
+      <div class="action-btn">
+        <div class="back-btn"><i class="far fa-long-arrow-left"></i></div>
+      </div>
+    </header>
+
+   
+
+    <main class="order-status-container">
+
+     <div class="status-item first">
+       <div class="status-circle"></div>
+       <div class="status-text">
+         today
+       </div>
+      </div>
+
+      <div class="status-item second">
+       <div class="status-circle"></div>
+       <div class="status-text">
+         Shipped
+       </div>
+      </div>
+
+      <!-- <div class="status-item">
+        <div class="status-circle"></div>
+        <div class="status-text green">
+        <span>Out</span><span>for delivery</span>
+        </div>
+      </div>
+
+      <div class="status-item">
+        <div class="status-circle"></div>
+       <div class="status-text green">
+         <span>Ariving</span>
+         <span>03&nbsp;-&nbsp;21</span>
+       </div>
+      </div> -->
+    </main>
+
+
+
+
+
+    <div class="order-details-container" style="display: none;">
+      <div class="odc-header">
+      <div class="cta-text">See your product details</div>
+      <div class="cta-button-container">
+        <button class="cta-button">View</button>
+      </div>
+      </div>
+      <div class="odc-wrapper">
+      <div class="odc-header-line">
+        Your order details
+      </div>
+      <div class="odc-header-details">
+        Your product details (order 040-904-790)
+      </div>
+      <div class="product-container">
+        <div class="product">
+          <div class="product-photo">
+            <img src="https://s3.eu-central-1.amazonaws.com/sneakerjagers.com/products/396x396/92074.jpg" class="img-photo">
+          </div>
+          <div class="product-desc">
+            <span>Nike Air Jordan 1</span>
+            <span>9740 INR</span>
+          </div>
+        </div><div class="product">
+          <div class="product-photo">
+            <img src="https://s3.eu-central-1.amazonaws.com/sneakerjagers.com/products/396x396/77674.jpg" class="img-photo">
+          </div>
+          <div class="product-desc">
+            <span>Alex rider: Never say die Novel 12</span>
+            <span>655 INR</span>
+          </div>
+        </div>
+      </div>
+      <a href="order-cancellationReqtoken12.netlify.app"><div class="cancellation">
+        Request Cancellation
+        </div></a>
+        
+      
+      
+      <div class="shipping-desc">Your Shipping Address</div>
+      
+      <div class="shipping-address">
+        Mahagun Moderne<br>
+        DELHI<br>
+        201305<br>
+        GAUTAM BUDH NAGAR, GHAZIABAD
+      </div>
+      </div>
+   
+
+  
+
+</div>
+</div>
+  
+
+</body>
+</html>

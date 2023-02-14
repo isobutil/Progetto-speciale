@@ -1,0 +1,464 @@
+@import url('https://fonts.googleapis.com/css?family=DM+Sans:400,500,600,700'); 
+
+
+:root {
+  --primary-color: #afff89;
+  --secondary-color: #3c6628;
+
+  --active-circle-color: #e5f5ff;
+  --active-line-color: #25abfc;
+  --text-color: #333333; 
+  --disactive-circle-color: rgb(208, 207, 207);
+  --disactive-text-color: rgb(171, 170, 170); 
+
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;  
+  margin: 0;
+  color: var(--text-color);
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+
+
+
+
+
+.title-header {
+  display: flex; 
+  padding: 10%;
+  background: var(--primary-color); 
+  height: 30%;
+
+  font-size: 2rem;
+  font-weight: 600;
+  
+  
+}
+
+.content-header{
+  display: flex;
+  flex-direction: column; 
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 10%;
+  border-bottom-style: solid;
+  border-bottom-color: var(--disactive-text-color);
+  border-bottom-width: 0.3px; 
+}
+
+.header-middle-title  {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.header-bottom-title  {
+  color: #338A9A;
+  font-size: 0.9rem;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+.back-btn {
+  display: flex; 
+  margin-right: 50px;
+  font-size: 1rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  text-align: center;
+  box-shadow: 5px 5px 25px 0px rgba(0,0,0,0.2);
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  transform: scale(1.2);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+
+
+/* Progressbar */
+.progressbar {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 5%;
+  margin-left: 5%;
+  gap: 3rem;
+ 
+}
+
+
+/*Barra di progresso*/
+.progressbar::before,
+.progress {
+  content: "";
+  position: absolute;  
+  height: 100%;
+  width: 6px;
+  transform: translateX(150%);
+  background-color: var(--active-line-color);
+  z-index: -1;
+  
+}
+
+
+.progress {
+  background-color: var(--disactive-circle-color);
+  height: 0%;
+  transition: 0.3s;
+}
+
+main{
+  padding: 5%
+}
+
+
+
+/*Singolo evento*/
+.status-circle{
+  height: 15px;
+  width: 15px;
+  display: flex;
+  border-radius: 50%;
+  border: 5px solid rgb(255, 255, 255);
+  background-color: var(--disactive-circle-color);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  z-index: 5;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  
+}
+
+.status-circle:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  
+
+}
+
+
+.status-circle::after {
+  content: attr(data-title) ;
+  position: absolute;
+  left: 4rem;  
+  font-size: 0.85rem;
+  color: var(--disactive-circle-color);
+}
+
+
+/*Classe per attivare un evento*/
+.progress-step-active {
+  background-color: #EAEBFF;
+  
+}
+
+
+.event-time{
+  position: absolute;
+  left: 4rem; 
+  transform: translateY(-100%); 
+  font-size: 0.85rem;
+  color: #666;
+  
+}
+.event-name{
+  transform: translateY(-70%); 
+  font-weight: bold;
+  position: absolute;
+  left: 4rem;  
+  font-size: 1rem;
+}
+
+.event-time-disabled{
+  position: absolute;
+  left: 4rem; 
+  transform: translateY(-100%); 
+  font-size: 0.75rem;
+  color: var(--disactive-text-color);
+  
+}
+.event-name-disabled{
+  transform: translateY(-70%);   
+  position: absolute;
+  left: 4rem;  
+  font-size: 0.85rem;
+  color: var(--disactive-text-color);
+}
+
+
+
+
+
+/*Footer*/
+
+.footer-container{
+  position: fixed; 
+  bottom: 0;
+  
+  width: 100%;
+  z-index: 6;
+  background-color: var(--primary-color);
+  
+  border-top-right-radius: 50px;
+  border-top-left-radius: 50px;
+  
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);  
+  cursor: default;
+}
+
+
+
+.odc-header {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 10px;
+}
+
+.cta-text {
+  margin-top: 40px;
+  margin-right: 25px;
+  color: var(--secondary-color);
+  font-size: 0.9rem;
+  text-shadow: 1px 1px 2px rgba(255,255,255,0.18);
+}
+
+.cta-button {
+  margin-top:20px;
+  padding: 20px 40px;
+  background-color: var(--secondary-color);
+  border: 0;
+  border-radius: 10px;
+  color: var(--primary-color);
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.10), 0 6px 6px rgba(0,0,0,0.05);
+  animation: shadow-pulse 1s infinite;
+  cursor:pointer;
+}
+
+@keyframes shadow-pulse
+{
+     0% {
+          box-shadow: 0 0 0 0px rgba(255, 255, 255, 0.2);
+     }
+     100% {
+          box-shadow: 0 0 0 35px rgba(255, 255, 255, 0);
+     }
+}
+
+.cta-button:focus {
+  outline:none;
+}
+
+.back-btn{
+  margin-left: auto; 
+  margin-right: 0;
+}
+
+
+
+.odc-header-line {
+  margin-top:30px;
+  color: var(--secondary-color);
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 40px
+}
+
+.odc-header-details {
+  color:var(--secondary-color);
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+
+/*Form CSS*/
+form {
+  margin-top:10px;
+  margin:30px;
+  box-sizing: border-box;
+  padding: 20px;
+  width: 320px;
+ 
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+.subtitle {
+  
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.input-container {
+  height: 50px;
+  position: relative;
+  width: 100%;
+}
+
+.ic1 {
+  margin-top: 40px;
+}
+
+.ic2 {
+  margin-top: 30px;
+}
+
+.input {
+  background-color: white;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: --;
+  font-size: 18px;
+  height: 100%;
+  outline: 0;
+  padding: 4px 20px 0;
+  width: 100%;
+}
+
+.cut {
+  background-color: var(--active-line-color);
+  border-radius: 10px;
+  height: 20px;
+  left: 20px;
+  position: absolute;
+  top: -20px;
+  transform: translateY(0);
+  transition: transform 200ms;
+  width: 76px;
+}
+
+.cut-short {
+  width: 50px;
+}
+
+.input:focus ~ .cut,
+.input:not(:placeholder-shown) ~ .cut {
+  transform: translateY(8px);
+}
+
+.placeholder {
+  color: var(--text-color);
+  font-family: sans-serif;
+  left: 20px;
+  line-height: 14px;
+  pointer-events: none;
+  position: absolute;
+  transform-origin: 0 50%;
+  transition: transform 200ms, color 200ms;
+  top: 20px;
+}
+
+.input:focus ~ .placeholder,
+.input:not(:placeholder-shown) ~ .placeholder {
+  transform: translateY(-30px) translateX(10px) scale(0.75);
+}
+
+.input:not(:placeholder-shown) ~ .placeholder {
+  color: var(--text-color);
+}
+
+.input:focus ~ .placeholder {
+  color: var(--primary-color);
+}
+
+.submit {
+  background-color: #08d;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  cursor: pointer;
+  font-size: 18px;
+  height: 50px;
+  margin-top: 38px;
+  outline: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.submit:active {
+  background-color: #06b;
+}
+
+
+.qrcode-cont{
+  margin:30px;
+  margin-top: 0px; 
+  box-sizing: border-box;
+  padding: 20px;
+  width: 320px;
+  height: 454px;
+}
+
+.show-modal{
+ display: block !important;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 10; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+.modal-section{
+  padding: 5%; 
+}

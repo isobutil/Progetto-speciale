@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=2.0, maximum-scale=1.0, user-scalable=no" />
+
+  <title>Mobile app - ESF</title>
+  <script defer src="https://cdn.jsdelivr.net/npm/dayjs@1.11.7/plugin/customParseFormat.js"></script>
+  <link rel="stylesheet" href="{{url_for('static', filename = 'style.css')}}">
+  <script defer src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+  <script defer src="{{url_for('static', filename = 'anime.min.js')}}"></script>
+  <script defer src="{{url_for('static', filename = 'script.js')}}"></script>
+  
+  
+
+  
+  
+</head>
+
+
+
+<body> 
+  
+    <header>    
+      <div class="title-header">SpecialPJ event</div>
+      <div class="content-header">
+        <div class="header-top-title">Questo sito è stato sviluppato per gestire un programma di eventi di un festival. E' un sito one page con tutti gli eventi in programma per un dato giorno (per questo caso è stato utilizzato un festival di un solo giorno nella data corrente) e viene aggiornato oscurando gli eventi passati evidenziando il primo evento disponibile in base all'ora corrente. In basso la possibilità di accreditarsi e visualizzare il pass di accesso al festival</div>
+        <br>               
+      <div class="header-bottom-title">Oggi: </div>
+      </div>
+
+
+      
+    </header>
+    {%for event in events%}
+    <div id="modal-{{event.id}}" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close" data-id="{{event.id}}">&times;</span>
+        <section class="modal-section">
+        <p class="subtitle" style="padding: 0; color: var(--disactive-text-color)">{{event.time}}</p>
+        <p class="title" style="margin-top: 0;">{{event.name}}</p>
+        
+        <p>{{event.info}}</p>
+        </section>
+      </div>
+    
+    </div>
+    {%endfor%}
+
+    <main>
+
+        <div class="progressbar">
+            <div class="progress" style="display: flex;" id="progress"></div>
+            
+            {% for event in events%}
+            <div class="status-circle progress-step-active" data-time="{{event['time']}}" data-id="{{event['id']}}"> <div class="event-time">{{event['time']}}</div><p class="event-name">{{event['name']}}         </p></div> 
+            
+            {% endfor %}                       
+
+          </div>
+          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </main>
+    <footer class="footer-container">
+
+      
+        <div class="odc-header" {% if session.signed %}style="padding-bottom: 30px;"{% endif %}>
+          <div class="cta-text">{% if not session.signed %}Premi per accreditarti{% else %}Visualizza l'accredito{% endif %}</div>
+          <div class="cta-button-container">
+            <button class="cta-button">{% if not session.signed %}Accreditati{% else %}Accredito{% endif %}</button>
+          </div>
+        </div>
+               
+        {% if not session.signed %}
+          <form method="post" action="{{url_for('new_user')}}">
+            
+            <div class="title">Accreditati<div class="action-btn">
+              <div class="back-btn"><i class="far fa-long-arrow-left"></i></div>
+            </div></div>
+            <div class="subtitle">Ottieni il pass d'accesso</div>
+            <div class="input-container ic1">
+              <input id="firstname" class="input" type="text" name="name" placeholder=" " />
+              <div class="cut"></div>
+              <label for="firstname" class="placeholder">First name</label>
+            </div>
+            <div class="input-container ic2">
+              <input id="lastname" class="input" type="text" name="surname" placeholder=" " />
+              <div class="cut"></div>
+              <label for="lastname" class="placeholder">Last name</label>
+            </div>
+            <div class="input-container ic2">
+              <input id="email" class="input" type="text" name="mail" placeholder=" " />
+              <div class="cut cut-short"></div>
+              <label for="email" class="placeholder">Email</label>
+            </div>
+            <button type="submit" class="submit">submit</button>
+          </form>
+        {% else %}
+        <div class="qrcode-cont" style="padding-top: 0px;">
+          <div class="action-btn">
+            <div class="back-btn"><i class="far fa-long-arrow-left"></i></div>
+          </div>
+          <section>
+          <div class="title">Benvenuto {{session.user}}</div>
+          <div class="subtitle">Ecco il tuo pass di accesso per l'evento</div> 
+          <br>
+          <div id="qrcode"></div>
+
+          <script  src="{{url_for('static', filename = 'qrcode.min.js')}}"></script>
+          
+          <script type="text/javascript">
+          new QRCode(document.getElementById("qrcode"), "{{session.signed}}");
+          </script>
+          </section>
+          
+          
+        </div>
+        {% endif %}
+
+    </footer>
+</body> 
+</html>
